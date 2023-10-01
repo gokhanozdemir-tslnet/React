@@ -1,0 +1,18 @@
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: aqua;
+  justify-content: center;
+  margin-left: 100px;
+  margin-right: 100px;
+  flex-direction: row;
+
+}
+.flex-container>div {
+  background-color:cadetblue;
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+  line-height: 100px;
+}
