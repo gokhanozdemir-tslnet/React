@@ -1,70 +1,27 @@
+import { useState } from "react";
 import "./App.css";
-import { addCardToItems } from "./store/card/card.action";
-import { useDispatch } from "react-redux";
+import CardList from "./components/cardList.component";
+import CardAdder from "./components/cardAdd.component";
+import ProductList from "./components/product.component";
 
 function App() {
-  const dispatch = useDispatch();
-
-  const submitClick = (event) => {
-    event.preventDefault();
-
-    const newCardToAdd = {
-      id: "1",
-      title: "event.target.value",
-    };
-    console.log(addCardToItems(newCardToAdd));
-    dispatch(addCardToItems(newCardToAdd));
-    // setCardItems([...cardItems, card]);
-    // console.log(cardItems);
-    // setCard(null);
-    // const newCardToAdd = state.card;
-    // // setCard(card);
-    // dispatch({
-    //   type: "ADD_CARD",
-    //   payload: newCardToAdd,
-    // });
-  };
-
-  const inputOnChange = (event) => {
-    // const card = {
-    //   id: event.target.value,
-    //   title: event.target.value,
-    // };
-    const newCardToAdd = {
-      id: event.target.value,
-      title: event.target.value,
-    };
-    // setCard(card);
-    //dispatch({ type: "SET_CARD", payload: newCardToAdd });
-  };
+  console.log("/********rendering App*******/");
 
   return (
     <div className="container" style={{ marginTop: "20px" }}>
       <div className="row">
-        <div className="col-md-5">
-          <form>
-            <input
-              type="text"
-              // onChange={inputOnChange}
-              className="form-control float-start"
-            />
-            {/* {state.card.title} */}
-            <button
-              type="submit"
-              onClick={submitClick}
-              //disabled={!state.card}
-              className="btn btn-sm btn-dark"
-            >
-              Add
-            </button>
-          </form>
-        </div>
+        <ProductList />
         <div className="col-md-5"></div>
       </div>
       <div className="row">
-        {/* {state.cardItems.map((card) => {
-          return <Card key={card.id} />;
-        })} */}
+        <CardAdder />
+        <div className="col-md-5"></div>
+      </div>
+      <div className="row">
+        <CardList />
+      </div>
+      <div className="row">
+        <CardList />
       </div>
     </div>
   );
