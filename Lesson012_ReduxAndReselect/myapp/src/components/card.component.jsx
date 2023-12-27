@@ -1,10 +1,11 @@
 const Card = ({ card }) => {
   console.log("/********rendering Card*******/");
-  const { title } = card;
+  const { title, images } = card;
+
   return (
     <div className="col">
       <div className="card" style={{ width: "18rem" }}>
-        <img className="card-img-top" src="..." alt="Card image cap" />
+        <img className="card-img-top" src={images} alt="Card image cap" />
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
           <p className="card-text">

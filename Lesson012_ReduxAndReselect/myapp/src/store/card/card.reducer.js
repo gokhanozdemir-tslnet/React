@@ -1,5 +1,5 @@
 import { CARD_ACTION_TYPES } from "./card.types";
-import { createSelector } from "reselect";
+import { createSelector } from "@reduxjs/toolkit";
 
 const fetchData = async () => {
   let products = [];
@@ -14,20 +14,21 @@ const fetchData = async () => {
   return products;
 };
 
-// const fillProducts = () => {
-//   let products = [];
-//   fetch("https://api.escuelajs.co/api/v1/products")
-//     .then((response) => response.json())
-//     .then((json) => (products = json));
-
-//   return products;
-// };
+//reselect
+const memoizedSelectCompletedTodos = createSelector(
+  [(state) => state.cartItems],
+  async (cartItems) => {
+    console.log("memoized selector ran");
+    return await fetchData;
+  }
+);
 
 const INITIAL_STATE = {
   cartItems: await fetchData(),
 };
 
 export const cardReducer = (state = INITIAL_STATE, action) => {
+  // console.log(memoizedSelectCompletedTodos(state));
   const { type, payload } = action;
   console.log("---cardReducer------");
   console.log("type:", type);
