@@ -14,7 +14,8 @@ const Products = () => {
   const onGetData = (e) => {
     addItemHandler();
   };
-
+  // console.log("------start component1*******");
+  // console.log(productItems);
   return (
     <div className="row">
       <div className="col-md-12">
@@ -22,9 +23,10 @@ const Products = () => {
           Data Getir
         </button>
       </div>
-      {products.map((product) => (
-        <ProductItem product={product} />
-      ))}
+      {/* {products.map((product) => (
+        <div key={product.id}>sdf</div>
+        // <ProductItem key={product.id} product={product} />
+      ))} */}
     </div>
   );
 };

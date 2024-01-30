@@ -26,18 +26,28 @@ import { configureStore, compose, applyMiddleware } from "@reduxjs/toolkit";
 import { createslice } from "@reduxjs/toolkit";
 import { rootReducer } from "./root-reducer";
 import { logger } from "redux-logger";
+import createSagaMiddleware from "redux-saga";
+import { rootSaga } from "./root-saga";
 
+console.log("*******store.js********");
 console.log(rootReducer);
+console.log("*******end of store.js********");
 
-const middlewares = [process.env.node_env === "development" && logger].filter(
-  Boolean
-);
-const composedEnhancers = compose;
+const sagaMiddleware = createSagaMiddleware();
 
-const composedenhancers = composedEnhancers(applyMiddleware(...middlewares));
+const middlewares = [logger, sagaMiddleware];
+//   [process.env.node_env === "development" && logger].filter(
+//   Boolean
+// );
+// const composedEnhancers = compose;
+
+// const composedenhancers = composedEnhancers(applyMiddleware(...middlewares));
 
 const store = configureStore({
   reducer: rootReducer,
-  // enhancers: composedenhancers,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(middlewares),
 });
 export default store;
+
+sagaMiddleware.run(rootSaga);
