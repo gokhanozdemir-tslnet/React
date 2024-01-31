@@ -25,14 +25,16 @@ const INITIAL_STATE = {
 const getData = (state) => {
   console.log("------start getData*******");
 
-  return { ...state, isLoading: true, products: SeedProduct };
+  return { ...state, isLoading: true };
 };
 
 export const productsReducer = (state = INITIAL_STATE, action = {}) => {
   const { type, payload } = action;
 
-  console.log("------start reducer*******");
-  // getData();
+  // console.log("------success*******");
+  // console.log(state);
+  // console.log(action);
+  // console.log("------end of success*******");
 
   switch (type) {
     case PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_START:

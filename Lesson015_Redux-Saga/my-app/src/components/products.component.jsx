@@ -8,7 +8,7 @@ const Products = () => {
   const productItems = useSelector(selectProducts);
   const dispatch = useDispatch();
   const addItemHandler = () => dispatch(fetchProductsStart());
-  // console.log(productItems);
+  console.log(productItems);
   const { products, error, isLoading } = productItems;
 
   const onGetData = (e) => {
@@ -23,10 +23,10 @@ const Products = () => {
           Data Getir
         </button>
       </div>
-      {/* {products.map((product) => (
-        <div key={product.id}>sdf</div>
-        // <ProductItem key={product.id} product={product} />
-      ))} */}
+      {products.map((product) => (
+        // <div key={product.id}>sdf</div>
+        <ProductItem key={product.id} product={product} />
+      ))}
     </div>
   );
 };
