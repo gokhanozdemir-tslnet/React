@@ -2,12 +2,16 @@
 import { selectProducts } from "@/store/products/product.selector";
 import { useDispatch, useSelector } from "react-redux";
 import ProductItem from "./product-item.component";
-import { fetchProductsStart } from "@/store/products/product.action";
+import { fetchProductsStart1 } from "@/store/products/product.reducer";
+import SeedProduct from "@/store/products/product.seed";
+// import { fetchProductsStart } from "@/store/products/product.action";
 
 const Products = () => {
   const productItems = useSelector(selectProducts);
+  console.log(productItems);
   const dispatch = useDispatch();
-  const addItemHandler = () => dispatch(fetchProductsStart());
+  const addItemHandler = () => dispatch(fetchProductsStart1(SeedProduct));
+  // console.log(fetchProductsStart1());
   const { products, error, isLoading } = productItems;
 
   const onGetData = (e) => {

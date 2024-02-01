@@ -1,20 +1,7 @@
 "use client";
 import { useState } from "react";
 import { PRODUCTS_ACTION_TYPES } from "./product.types";
-import SeedProduct from "./product.seed";
-
-const fetchData = async () => {
-  let products = [];
-  try {
-    console.log("fetchinf data");
-    const response = await fetch("https://api.escuelajs.co/api/v1/products");
-    const json = await response.json();
-    products = await json;
-  } catch (error) {
-    console.log("error", error);
-  }
-  return products;
-};
+import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
   isLoading: false,
@@ -22,28 +9,37 @@ const INITIAL_STATE = {
   products: [],
 };
 
-const getData = (state) => {
-  console.log("------start getData*******");
+export const productsSlice = createSlice({
+  name: "products",
+  initialState: INITIAL_STATE,
+  reducers: {
+    fetchProductsStart1(state, action) {
+      console.log("********productsSlice");
+      console.log(state.products);
+      console.log(action);
+      console.log(action.payload);
+      console.log("********productsSlice");
+      state.products = action.payload;
+    },
+  },
+});
 
-  return { ...state, isLoading: true };
-};
+// console.log("*********************")
+// console.log(productsSlice.reducer);
 
-export const productsReducer = (state = INITIAL_STATE, action = {}) => {
-  const { type, payload } = action;
+export const { fetchProductsStart1 } = productsSlice.actions;
+export const productsReducer = productsSlice.reducer;
 
-  // console.log("------success*******");
-  // console.log(state);
-  // console.log(action);
-  // console.log("------end of success*******");
-
-  switch (type) {
-    case PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_START:
-      return getData(state);
-    case PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_SUCCESS:
-      return { ...state, isLoading: false, products: payload };
-    case PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_FAILED:
-      return { ...state, isLoading: false, error: payload };
-    default:
-      return state;
-  }
-};
+// export const productsReducerOld = (state = INITIAL_STATE, action = {}) => {
+//   const { type, payload } = action;
+//   switch (type) {
+//     case PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_START:
+//       return { ...state, isLoading: true };
+//     case PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_SUCCESS:
+//       return { ...state, isLoading: false, products: payload };
+//     case PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_FAILED:
+//       return { ...state, isLoading: false, error: payload };
+//     default:
+//       return state;
+//   }
+// };

@@ -6,6 +6,9 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 export const fetchProductsStart = () =>
   createAction(PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_START);
 
+export const fetchProductsStart1 = (products) =>
+  createAction(PRODUCTS_ACTION_TYPES.fetchProductsStart1, products);
+
 export const fetchProductsSuccess = (products) =>
   createAction(PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_SUCCESS, products);
 
