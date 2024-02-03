@@ -8,6 +8,7 @@ import SeedProduct from "@/store/products/product.seed";
 
 const Products = () => {
   const productItems = useSelector(selectProducts);
+  //const productsItems2 = useSelector((state)=>state.products)
   console.log(productItems);
   const dispatch = useDispatch();
   const addItemHandler = () => dispatch(fetchProductsStart1(SeedProduct));

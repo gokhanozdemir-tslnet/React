@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { PRODUCTS_ACTION_TYPES } from "./product.types";
+// import { PRODUCTS_ACTION_TYPES } from "./product.types";
 import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
@@ -14,11 +14,11 @@ export const productsSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     fetchProductsStart1(state, action) {
-      console.log("********productsSlice");
-      console.log(state.products);
-      console.log(action);
-      console.log(action.payload);
-      console.log("********productsSlice");
+      // console.log("********productsSlice");
+      // console.log(state.products);
+      // console.log(action);
+      // console.log(action.payload);
+      // console.log("********productsSlice");
       state.products = action.payload;
     },
   },
